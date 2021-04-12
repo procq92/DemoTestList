@@ -19,17 +19,14 @@ class ItemEditingViewModel :ObservableObject {
     
     //    @Published var choosenContainerId :UUID?
     @Published var editedItem :Item?
-    @Published var itemNameValidated :Bool = false
     @Published var clickOnContainer :Bool = false
     @Published var containerNameTyped :String = ""
-    
-    var titleText :String { editedItem == nil ? "Ajouter item" : "Modifier item"}
-    
+        
     func choosenContainerName (fromContainerId choosenContainerId :UUID?) -> String {
         if let id = choosenContainerId {
             return demoTestManager.getContainerName(fromUUID: id)
         } else {
-            return "Cliquer pour choisir un container"
+            return "Click to choose a container"
         }
     }
     
@@ -49,22 +46,9 @@ class ItemEditingViewModel :ObservableObject {
                 let container = Container(name: containerNameTyped)
                 demoTestManager.addContainer(withContainer: container)
                 editedItem?.containerId = container.id
-                
             }
         } else {
             print("validateContainerChoice -> empty containerNameTyped")
-        }
-    }
-    
-    func validateContainerChoice (withContainerId containerId :UUID) {
-        if var item = editedItem {
-            objectWillChange.send()
-            print ("Item \(item.name) modified with containerId=\(containerId)")
-            item.containerId = containerId
-            //            choosenContainerId = containerId
-            demoTestManager.validateItem(withItem: item)
-        } else {
-            print ("Error in validateContainerChoice")
         }
     }
 }

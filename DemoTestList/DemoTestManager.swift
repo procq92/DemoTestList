@@ -28,13 +28,6 @@ class DemoTestManager :ObservableObject {
         }
     }
     
-    func getId (ofItemName name :String) -> UUID? {
-        let item = itemList.first { (art) -> Bool in
-            art.name == name
-        }
-        return item?.id ?? nil
-    }
-    
     func addContainer(withContainer container :Container) {
 //        objectWillChange.send()
         containerList.append(container)
@@ -54,7 +47,7 @@ class DemoTestManager :ObservableObject {
             }) {
                 return containerFounded.name
             } else {
-                return ("Id container introuvable")
+                return ("ContainerId not found")
             }
         }
         else {

@@ -27,30 +27,30 @@ struct ItemEditingView: View {
                 .autocapitalization(.sentences)
                 .disableAutocorrection(true)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .frame(width: 200, height: 30, alignment: .leading)
+                .frame(width: 300, height: 30, alignment: .leading)
             Text(viewModel.choosenContainerName(fromContainerId: viewModel.editedItem?.containerId))
                 .padding(.horizontal)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .frame(width: 200, height: 40, alignment: .leading)
+                .frame(width: 300, height: 40, alignment: .leading)
                 .autocapitalization(.sentences)
                 .disableAutocorrection(true)
                 .onTapGesture {
                     viewModel.clickOnContainer = true
                 }
                 .background(Color(.white))
-            let texte = "editedItem.containerId=\(viewModel.editedItem?.containerId?.uuidString ?? "nil")"
-            Text(texte)
-                .font(.caption2)
-                .padding(.bottom)
-           Spacer()
+//            let texte = "editedItem.containerId=\(viewModel.editedItem?.containerId?.uuidString ?? "nil")"
+//            Text(texte)
+//                .font(.caption2)
+//                .padding(.bottom)
             if viewModel.clickOnContainer {
                 ChooseContainerView(demoTestManager: viewModel.demoTestManager, choosenContainerName: $viewModel.containerNameTyped, showContainerChoice: $viewModel.clickOnContainer, containerList: viewModel.demoTestManager.containerList)
                     .onDisappear(perform: viewModel.validateContainerChoice)
-                Text("container : id=\(viewModel.editedItem?.containerId?.uuidString ?? "nil")").font(.caption2)
+//                Text("container : id=\(viewModel.editedItem?.containerId?.uuidString ?? "nil")").font(.caption2)
             }
-            let texte2 = "editedItem.id=\(viewModel.editedItem?.id.uuidString ?? "nil")"
-            Text(texte2).font(.caption2)
-        }.navigationTitle(viewModel.titleText).onDisappear( perform: viewModel.validateItem)
+//            let texte2 = "editedItem.id=\(viewModel.editedItem?.id.uuidString ?? "nil")"
+//            Text(texte2).font(.caption2)
+            Spacer()
+        }.navigationTitle("Edit Item...").onDisappear( perform: viewModel.validateItem)
     }
 }
 

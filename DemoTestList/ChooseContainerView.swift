@@ -22,7 +22,7 @@ struct ChooseContainerView: View {
     
     var body: some View {
         VStack {
-            TextField(NSLocalizedString("Ajouter un container", comment: ""),
+            TextField(NSLocalizedString("Add a container", comment: ""),
                       text: $containerName
                       , onCommit: { showContainerChoiceView = false }
                       //                      , onCommit: { containerId = viewModel.validateContainerName() }
@@ -32,7 +32,7 @@ struct ChooseContainerView: View {
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .frame(width: 200, height: 30, alignment: .leading)
             List () {
-                ForEach (viewModel.containerList.sorted(by: { $0.name < $1.name })) { container in
+                ForEach (viewModel.demoTestManager.containerList.sorted(by: { $0.name < $1.name })) { container in
                     Text ("\(container.name)")
                         .onTapGesture {
                             containerName = container.name
