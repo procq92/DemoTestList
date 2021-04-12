@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct DemoTestListApp: App {
+    @ObservedObject var demoTestManager = DemoTestManager()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ItemListView(demoTestManager: demoTestManager)
         }
     }
 }
