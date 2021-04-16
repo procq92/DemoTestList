@@ -10,7 +10,7 @@ import Foundation
 class DemoTestManager :ObservableObject {
     
     @Published var itemList :[Item] = [] // ne pas enlever published sinon KO
-    var containerList :[Container] = []  // si on ajoute published KO
+    @Published var containerList :[Container] = []  // si on ajoute published KO
     
     func getIndex (fromItemId id:UUID) -> Int? {
         return itemList.firstIndex(where: { (art) -> Bool in
